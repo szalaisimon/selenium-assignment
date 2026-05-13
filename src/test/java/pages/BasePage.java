@@ -10,6 +10,7 @@ import java.time.Duration;
 
 public class BasePage {
 
+    protected final String BASE_URL = "https://www.rottentomatoes.com/";
     protected WebDriver driver;
     protected WebDriverWait wait;
 
@@ -38,5 +39,10 @@ public class BasePage {
 
     public String getBodyText() {
         return waitAndReturnElement(By.tagName("body")).getText();
+    }
+
+    public WebElement waitVisibilityAndFindElement(By locator) {
+        this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return this.driver.findElement(locator);
     }
 }

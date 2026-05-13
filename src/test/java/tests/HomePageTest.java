@@ -30,22 +30,21 @@ public class HomePageTest {
     @Test
     public void homePageStaticContentTest() {
         String title = homePage.getPageTitle();
-        Assert.assertTrue(title.contains("Tchibo"));
+        Assert.assertTrue(title.contains("Rotten Tomatoes"));
+
+        String bodyText = homePage.getBodyText().toLowerCase();
 
         // menu items
-        String bodyText = homePage.getBodyText();
-        Assert.assertTrue(bodyText.contains("Heti ajánlat"));
-        Assert.assertTrue(bodyText.contains("Kávé"));
-        Assert.assertTrue(bodyText.contains("Női"));
-        Assert.assertTrue(bodyText.contains("Férfi"));
-        Assert.assertTrue(bodyText.contains("Gyerek"));
-        Assert.assertTrue(bodyText.contains("Otthon"));
-        Assert.assertTrue(bodyText.contains("Sport"));
-        Assert.assertTrue(bodyText.contains("Outlet"));
+        Assert.assertTrue(bodyText.contains("movies"));
+        Assert.assertTrue(bodyText.contains("tv shows"));
+        Assert.assertTrue(bodyText.contains("rt app"));
+        Assert.assertTrue(bodyText.contains("news"));
+        Assert.assertTrue(bodyText.contains("showtimes"));
 
         // home page titles
-        Assert.assertTrue(bodyText.contains("Kategóriáink"));
-        Assert.assertTrue(bodyText.contains("Kávé kiválasztása és megrendelése"));
-        Assert.assertTrue(bodyText.contains("Legújabb kínálataink"));
+        Assert.assertTrue(bodyText.contains("movies in theaters"));
+        Assert.assertTrue(bodyText.contains("watch at home"));
+        Assert.assertTrue(bodyText.contains("new to rent/buy at home"));
+        Assert.assertTrue(bodyText.contains("coming soon to theaters"));
     }
 }
