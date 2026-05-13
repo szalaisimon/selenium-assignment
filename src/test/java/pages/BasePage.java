@@ -10,11 +10,11 @@ import java.time.Duration;
 
 public class BasePage {
 
-    protected final String BASE_URL =
-            "https://www.rottentomatoes.com/";
-
+    protected final String BASE_URL = "https://www.rottentomatoes.com/";
     protected WebDriver driver;
     protected WebDriverWait wait;
+
+    private final By signInButton = By.id("masthead-show-login-btn");
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -50,5 +50,14 @@ public class BasePage {
     public WebElement waitVisibilityAndFindElement(By locator) {
         this.wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return this.driver.findElement(locator);
+    }
+
+    public boolean isSignInButtonVisible() {
+        try {
+            waitAndReturnElement(signInButton);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

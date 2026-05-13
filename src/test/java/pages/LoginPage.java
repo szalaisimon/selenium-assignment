@@ -2,11 +2,11 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
     private static final String LOGIN_PATH = "login";
-    private static final String LOGOUT_PATH = "login";
     private static final String EMAIL = "szalai.simon@gmail.com";
     private static final String PASSWORD = "password123";
     private final By emailLocator = By.id("login-email-input");
@@ -22,11 +22,25 @@ public class LoginPage extends BasePage {
 
     public void login() {
         clickElement(acceptCookiesButton);
+        pause(500);
 
         typeIntoElement(emailLocator, EMAIL);
+        pause(800);
         clickElement(emailLoginButton);
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordLocator));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passwordLoginButton));
+
         typeIntoElement(passwordLocator, PASSWORD);
+        pause(500);
         clickElement(passwordLoginButton);
+    }
+
+    private void pause(long millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 }

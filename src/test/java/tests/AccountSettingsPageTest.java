@@ -5,16 +5,23 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.AccountSettingsPage;
 import pages.LoginPage;
 
-public class LoginPageTest {
+
+public class AccountSettingsPageTest {
+
     private WebDriver driver;
-    private LoginPage loginPage;
+    private AccountSettingsPage accountSettingsPage;
 
     @BeforeMethod
     public void setUp() {
         driver = DriverFactory.createStealthDriver();
-        loginPage = new LoginPage(driver);
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login();
+
+        accountSettingsPage = new AccountSettingsPage(driver);
     }
 
     @AfterMethod
@@ -25,11 +32,10 @@ public class LoginPageTest {
     }
 
     @Test
-    public void successfulLoginTest() {
-        loginPage.login();
-        String bodyText = loginPage.getBodyText().toLowerCase();
-        Assert.assertTrue(bodyText.contains("simon"));
-        Assert.assertTrue(bodyText.contains("szalai"));
-        Assert.assertTrue(bodyText.contains("log out"));
+    public void successfulLogoutTest() {
+        accountSettingsPage.logout();
+
+        Assert.assertTrue(accountSettingsPage.isSignInButtonVisible());
     }
+
 }
