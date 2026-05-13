@@ -23,4 +23,12 @@ public class DriverFactory {
 
         return driver;
     }
+
+    public static ChromeDriver createHeadlessDriver() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--window-size=1920,1080");
+
+        return new ChromeDriver(options);
+    }
 }

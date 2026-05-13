@@ -31,7 +31,7 @@ public class AccountSettingsPageTest {
         }
     }
 
-    @Test
+    @Test(dependsOnGroups = {"login"})
     public void successfulLogoutTest() {
         accountSettingsPage.logout();
 

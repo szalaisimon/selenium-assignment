@@ -24,7 +24,7 @@ public class LoginPageTest {
         }
     }
 
-    @Test
+    @Test(groups = {"login"})
     public void successfulLoginTest() {
         loginPage.login();
         String bodyText = loginPage.getBodyText().toLowerCase();
