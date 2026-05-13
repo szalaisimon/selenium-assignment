@@ -10,21 +10,27 @@ import java.time.Duration;
 
 public class BasePage {
 
-    protected final String BASE_URL = "https://www.rottentomatoes.com/";
+    protected final String BASE_URL =
+            "https://www.rottentomatoes.com/";
+
     protected WebDriver driver;
     protected WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     protected WebElement waitAndReturnElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    protected WebElement waitAndReturnClickableElement(By locator) {
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
     protected void clickElement(By locator) {
-        waitAndReturnElement(locator).click();
+        waitAndReturnClickableElement(locator).click();
     }
 
     protected void typeIntoElement(By locator, String text) {
