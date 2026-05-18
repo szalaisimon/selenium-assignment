@@ -19,12 +19,10 @@ student:
 # This has no effect on your grade.
 # ----------------------------------------------------------
 ai_usage:
-  used: false
-  tools: ""           # e.g. "Claude, GitHub Copilot"
-  description: ""     # e.g. "Used Claude to generate initial Page Object 
-                       #  classes, then modified them manually. Used Copilot 
-                       #  for autocomplete while writing test methods."
-                       
+  used: true
+  tools: "GitHub Copilot"
+  description: "Used GitHub Copilot for code suggestions and BasePage structure, but implemented and adjusted the code manually. The stealthDriver method was suggested by Copilot and not written by me"
+
 # ----------------------------------------------------------
 # Quality requirements (gatekeepers)
 # ----------------------------------------------------------

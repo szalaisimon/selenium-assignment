@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class DriverFactory {
 
+    // Stealth driver uses anti-detection Chrome options so websites are less likely to flag Selenium automation.
     public static ChromeDriver createStealthDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-blink-features=AutomationControlled");
@@ -27,7 +28,6 @@ public class DriverFactory {
     public static ChromeDriver createHeadlessDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
-        options.addArguments("--window-size=1920,1080");
 
         return new ChromeDriver(options);
     }
