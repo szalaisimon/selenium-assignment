@@ -1,4 +1,4 @@
-package tests;
+package tests.auth;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.AccountSettingsPage;
 import pages.LoginPage;
+import tests.DriverFactory;
 
 
 public class AccountSettingsPageTest {
